@@ -79,3 +79,31 @@ for(let i=0;i<80;i++){
     document.body.appendChild(star);
 
 }
+// Click Heart Burst
+document.addEventListener("click",(e)=>{
+
+for(let i=0;i<10;i++){
+
+const heart=document.createElement("div");
+
+heart.innerHTML="💖";
+
+heart.style.position="fixed";
+heart.style.left=e.clientX+"px";
+heart.style.top=e.clientY+"px";
+heart.style.fontSize=(15+Math.random()*20)+"px";
+heart.style.pointerEvents="none";
+heart.style.transition="1.2s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.style.transform=`translate(${(Math.random()-0.5)*180}px,${-150-Math.random()*80}px) scale(0)`;
+heart.style.opacity="0";
+},50);
+
+setTimeout(()=>heart.remove(),1200);
+
+}
+
+});
