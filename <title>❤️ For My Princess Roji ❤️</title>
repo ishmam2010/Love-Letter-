@@ -1,0 +1,536 @@
+<!-- Floating Hearts -->
+<div id="hearts"></div>
+
+<style>
+#hearts span{
+position:fixed;
+bottom:-20px;
+font-size:20px;
+animation:up 8s linear infinite;
+pointer-events:none;
+}
+@keyframes up{
+0%{transform:translateY(0) rotate(0);opacity:1;}
+100%{transform:translateY(-110vh) rotate(360deg);opacity:0;}
+}
+
+.rose{
+position:fixed;
+top:-40px;
+font-size:22px;
+animation:fall 10s linear infinite;
+pointer-events:none;
+}
+
+@keyframes fall{
+0%{transform:translateY(-10vh) rotate(0deg);}
+100%{transform:translateY(110vh) rotate(360deg);}
+}
+
+.star{
+position:fixed;
+width:3px;
+height:3px;
+background:white;
+border-radius:50%;
+box-shadow:0 0 10px white;
+animation:shoot 3s linear infinite;
+}
+
+@keyframes shoot{
+0%{
+transform:translate(-100px,-100px);
+opacity:0;
+}
+10%{
+opacity:1;
+}
+100%{
+transform:translate(120vw,120vh);
+opacity:0;
+}
+}
+</style>
+
+<script>
+// ❤️ Hearts
+setInterval(()=>{
+let h=document.createElement("span");
+h.innerHTML="❤️";
+h.style.left=Math.random()*100+"vw";
+h.style.fontSize=(15+Math.random()*20)+"px";
+document.getElementById("hearts").appendChild(h);
+setTimeout(()=>h.remove(),8000);
+},300);
+
+// 🌹 Roses
+setInterval(()=>{
+let r=document.createElement("div");
+r.className="rose";
+r.innerHTML="🌹";
+r.style.left=Math.random()*100+"vw";
+document.body.appendChild(r);
+setTimeout(()=>r.remove(),10000);
+},1200);
+
+// 🌠 Shooting Stars
+setInterval(()=>{
+let s=document.createElement("div");
+s.className="star";
+s.style.left=Math.random()*20+"vw";
+s.style.top=Math.random()*20+"vh";
+document.body.appendChild(s);
+setTimeout(()=>s.remove(),3000);
+},2000);
+</script>
+<style>
+
+/* Premium Glass Card */
+.container{
+backdrop-filter:blur(18px);
+background:rgba(255,255,255,.08);
+border:1px solid rgba(255,255,255,.2);
+box-shadow:0 0 40px rgba(255,100,180,.35);
+border-radius:30px;
+animation:floatCard 5s ease-in-out infinite;
+}
+
+@keyframes floatCard{
+0%,100%{
+transform:translateY(0);
+}
+50%{
+transform:translateY(-12px);
+}
+}
+
+/* Envelope Animation */
+
+.envelope{
+transition:.8s;
+transform-style:preserve-3d;
+}
+
+.envelope:hover{
+transform:rotateX(15deg) scale(1.05);
+}
+
+.front{
+transition:.8s;
+transform-origin:top;
+}
+
+.envelope:hover .front{
+transform:rotateX(-180deg);
+}
+
+.letter{
+opacity:0;
+transform:translateY(40px);
+transition:1s;
+}
+
+.envelope:hover .letter{
+opacity:1;
+transform:translateY(-80px);
+}
+
+/* Button Glow */
+
+#openBtn{
+background:linear-gradient(45deg,#ff4d6d,#ff99cc);
+box-shadow:0 0 20px #ff4d6d;
+transition:.4s;
+}
+
+#openBtn:hover{
+transform:scale(1.1);
+box-shadow:0 0 40px #ff99cc;
+}
+
+/* Moon Glow */
+
+.moon{
+animation:moonGlow 3s infinite alternate;
+}
+
+@keyframes moonGlow{
+from{
+box-shadow:0 0 20px #fff;
+}
+to{
+box-shadow:0 0 70px #fff7c2;
+}
+
+}
+
+/* Background Animation */
+
+body::before{
+content:"";
+position:fixed;
+width:200%;
+height:200%;
+background:radial-gradient(circle,transparent 60%,rgba(255,255,255,.05));
+animation:bgMove 25s linear infinite;
+z-index:-1;
+}
+
+@keyframes bgMove{
+
+0%{
+transform:translate(-10%,-10%) rotate(0deg);
+}
+
+100%{
+transform:translate(-20%,-20%) rotate(360deg);
+}
+
+}
+
+</style>
+
+<script>
+
+// Premium Click Effect
+
+document.addEventListener("click",(e)=>{
+
+for(let i=0;i<12;i++){
+
+let heart=document.createElement("div");
+
+heart.innerHTML="💖";
+
+heart.style.position="fixed";
+
+heart.style.left=e.clientX+"px";
+
+heart.style.top=e.clientY+"px";
+
+heart.style.fontSize=(15+Math.random()*20)+"px";
+
+heart.style.pointerEvents="none";
+
+heart.style.transition="1.3s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+
+heart.style.transform=`translate(${(Math.random()-0.5)*250}px,${-180-Math.random()*120}px) scale(0)`;
+
+heart.style.opacity="0";
+
+},50);
+
+setTimeout(()=>heart.remove(),1400);
+
+}
+
+});
+
+</script>
+<style>
+
+/* Photo Frame */
+
+.gallery{
+display:flex;
+justify-content:center;
+gap:15px;
+margin-top:20px;
+}
+
+.gallery img{
+width:90px;
+height:90px;
+border-radius:15px;
+border:3px solid rgba(255,255,255,.6);
+object-fit:cover;
+transition:.5s;
+box-shadow:0 0 15px rgba(255,255,255,.4);
+}
+
+.gallery img:hover{
+transform:scale(1.15) rotate(5deg);
+box-shadow:0 0 25px hotpink;
+}
+
+/* Music Button */
+
+.music{
+position:fixed;
+bottom:25px;
+left:25px;
+width:60px;
+height:60px;
+border-radius:50%;
+background:linear-gradient(45deg,#ff4d6d,#ff99cc);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:28px;
+color:#fff;
+cursor:pointer;
+box-shadow:0 0 20px hotpink;
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+0%,100%{transform:scale(1);}
+50%{transform:scale(1.12);}
+}
+
+/* Love Text */
+
+.love{
+font-size:42px;
+font-weight:bold;
+background:linear-gradient(90deg,#ff4d6d,#ff99cc,#ffffff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+animation:shine 4s linear infinite;
+}
+
+@keyframes shine{
+0%{background-position:0%;}
+100%{background-position:200%;}
+}
+
+/* Typing Cursor */
+
+#typing::after{
+content:"|";
+animation:blink .7s infinite;
+}
+
+@keyframes blink{
+50%{opacity:0;}
+}
+
+</style>
+
+<div class="gallery">
+<img src="https://picsum.photos/200?1">
+<img src="https://picsum.photos/200?2">
+<img src="https://picsum.photos/200?3">
+</div>
+
+<div class="music" onclick="toggleMusic()">🎵</div>
+
+<audio id="bgmusic" loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+function toggleMusic(){
+
+const music=document.getElementById("bgmusic");
+
+if(music.paused){
+music.play();
+}else{
+music.pause();
+}
+
+}
+
+// Photo Animation
+
+let imgs=document.querySelectorAll(".gallery img");
+
+setInterval(()=>{
+
+imgs.forEach(i=>i.style.transform="scale(1)");
+
+let r=Math.floor(Math.random()*imgs.length);
+
+imgs[r].style.transform="scale(1.2) rotate(5deg)";
+
+},2000);
+
+</script>
+<style>
+
+/* Big Heart */
+.big-heart{
+position:fixed;
+left:50%;
+top:50%;
+transform:translate(-50%,-50%) scale(0);
+font-size:120px;
+opacity:0;
+pointer-events:none;
+animation:heartBeat 2s ease-in-out infinite;
+}
+
+@keyframes heartBeat{
+0%{transform:translate(-50%,-50%) scale(.8);}
+25%{transform:translate(-50%,-50%) scale(1);}
+50%{transform:translate(-50%,-50%) scale(.9);}
+75%{transform:translate(-50%,-50%) scale(1.1);}
+100%{transform:translate(-50%,-50%) scale(.8);}
+}
+
+/* Final Message */
+.final-message{
+position:fixed;
+left:50%;
+bottom:40px;
+transform:translateX(-50%);
+font-size:28px;
+font-weight:bold;
+color:#fff;
+text-shadow:0 0 15px hotpink;
+opacity:0;
+transition:1s;
+}
+
+.show{
+opacity:1;
+}
+
+</style>
+
+<div class="big-heart" id="bigHeart">❤️</div>
+
+<div class="final-message" id="finalText">
+I Love You Forever ❤️
+</div>
+
+<script>
+
+// Show Final Love
+
+setTimeout(()=>{
+
+document.getElementById("bigHeart").style.opacity="1";
+document.getElementById("bigHeart").style.transform="translate(-50%,-50%) scale(1)";
+
+document.getElementById("finalText").classList.add("show");
+
+},5000);
+
+// Heart Rain Boost
+
+setInterval(()=>{
+
+for(let i=0;i<6;i++){
+
+let h=document.createElement("div");
+
+h.innerHTML="💖";
+
+h.style.position="fixed";
+
+h.style.left=Math.random()*100+"vw";
+
+h.style.top="-20px";
+
+h.style.fontSize=(15+Math.random()*25)+"px";
+
+h.style.animation="fall 6s linear";
+
+document.body.appendChild(h);
+
+setTimeout(()=>h.remove(),6000);
+
+}
+
+},1500);
+
+</script>
+<style>
+
+.distance-box{
+width:90%;
+max-width:700px;
+margin:40px auto;
+padding:25px;
+text-align:center;
+border-radius:25px;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(15px);
+border:1px solid rgba(255,255,255,.2);
+box-shadow:0 0 25px rgba(255,105,180,.4);
+animation:floatText 4s ease-in-out infinite;
+}
+
+.distance-box h2{
+font-size:35px;
+color:#ff8acb;
+margin-bottom:15px;
+text-shadow:0 0 10px hotpink;
+}
+
+.distance-box h1{
+font-size:48px;
+background:linear-gradient(90deg,#ff4d6d,#ffffff,#ff4d6d);
+background-size:200%;
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+animation:shine 3s linear infinite;
+margin-bottom:15px;
+}
+
+.distance-box p{
+font-size:22px;
+color:#fff;
+line-height:1.8;
+}
+
+.route{
+font-size:32px;
+font-weight:bold;
+margin-top:20px;
+color:#ffd6ec;
+animation:pulseRoute 2s infinite;
+}
+
+@keyframes pulseRoute{
+0%,100%{
+transform:scale(1);
+}
+50%{
+transform:scale(1.08);
+}
+}
+
+@keyframes floatText{
+0%,100%{
+transform:translateY(0);
+}
+50%{
+transform:translateY(-10px);
+}
+}
+
+@keyframes shine{
+0%{
+background-position:0%;
+}
+100%{
+background-position:200%;
+}
+}
+
+</style>
+
+<div class="distance-box">
+
+<h2>💖 Long Distance Never Matters 💖</h2>
+
+<h1>Distance Can't Separate Hearts</h1>
+
+<p>
+No matter how many kilometers stand between us,<br>
+my heart always finds its way to you. ❤️
+</p>
+
+<div class="route">
+📍 Dhaka ➜ ❤️ ➜ Bogura
+</div>
+
+</div>
